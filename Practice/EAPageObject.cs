@@ -55,6 +55,7 @@ namespace Practice
             Registered_Password.EnterText(regpwd);
             Save_Button.Clickk();
             Console.WriteLine("Details filled successfully");
+            Console.WriteLine("Changes Done");
         }
 
 
