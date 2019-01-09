@@ -5,49 +5,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace Practice
 {
-    class SeleniumSetMethods
+   public static class SeleniumSetMethods
     {
 
         //Enter test method
-        public static void EnterText(String element, Propertytype elementType, String value)
+        public static void EnterText(this IWebElement element, String value)
         {
-            if (elementType == Propertytype.Id)
-            {
-                PropertiesCollection.driver.FindElement(By.Id(element)).SendKeys(value);
-            }
-            if (elementType == Propertytype.Name)
-            {
-                PropertiesCollection.driver.FindElement(By.Name(element)).SendKeys(value);
-            }
+            
+            element.SendKeys(value);
 
         }
 
-        public static void Click(String element, Propertytype elementType)
+        public static void Clickk(this IWebElement element)
         {
-            if (elementType == Propertytype.Id)
-            {
-                PropertiesCollection.driver.FindElement(By.Id(element)).Click();
-            }
-            if (elementType == Propertytype.Name)
-            {
-                PropertiesCollection.driver.FindElement(By.Name(element)).Click();
-            }
+            element.Click();
         }
 
-        public static void SelectDropDown(String element, Propertytype elementtype, String value)
+        public static void SelectDDL(this IWebElement element, String value)
         {
-            if (elementtype == Propertytype.Id)
-            {
-                new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).SelectByText(value);
 
-            }
-            if (elementtype == Propertytype.Name)
-            {
-                new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).SelectByText(value);
-            }
+            new SelectElement(element).SelectByValue(value);
+
+
         }
     }
 

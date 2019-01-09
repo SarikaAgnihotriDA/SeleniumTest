@@ -15,34 +15,58 @@ namespace Practice
        
         static void Main(string[] args)
         {
-
+          
+            
         }
         [SetUp]
         public void initialize()
         {
             PropertiesCollection.driver = new ChromeDriver();
             //navigate to a url
-            PropertiesCollection.driver.Navigate().GoToUrl("http://www.facebook.com");
-            Console.WriteLine("Browser opened");
+            PropertiesCollection.driver.Navigate().GoToUrl("file:///C:/Users/Lenovo/Desktop/Login%20design/index.html");
+            Console.WriteLine("Login Page Opened");
+            
 
-
+ 
         }
         [Test]
-        public void Test1()
+        public void LoginPage()
         {
-            //SeleniumSetMethods.EnterText("email", Propertytype.Name, "sarika601@ymail.com");
-            //SeleniumSetMethods.EnterText("pass", Propertytype.Name, "2256810");
+            //initialize the login page
+            LoginPageObject pageLogin = new LoginPageObject();
 
-            SeleniumSetMethods.EnterText("firstname", Propertytype.Name,"Sarika");
-            SeleniumSetMethods.EnterText("lastname", Propertytype.Name, "Sharma");
-            SeleniumSetMethods.EnterText("reg_email__", Propertytype.Name, "sarika601@ymail.com");
-            SeleniumSetMethods.EnterText("reg_passwd__", Propertytype.Name, "2256810");
-          
+           EAPageObject EAPage= pageLogin.Login("Sarika", "Sarika123");
 
-            Console.WriteLine("The email id is: " + SeleniumGetMethods.GetText(Propertytype.Name, "reg_email__"));
-           
+            EAPage.FillUserForm("Sarika", "Sharma", "sarika601@ymail.com", "Sarika601@ymail.com", "Sarika123");
+            
+            //initialize page
+            EAPageObject page = new EAPageObject();
+            
+        
 
-            Console.WriteLine("Details filled");
+
+            //SeleniumSetMethods.EnterText("firstname", Propertytype.Name, "Divya");
+            //SeleniumSetMethods.EnterText("lastname", Propertytype.Name, "Agnihotri");
+            //SeleniumSetMethods.EnterText("reg_email__", Propertytype.Name, "sarikasharma146@gmail.com");
+            //SeleniumSetMethods.EnterText("reg_passwd__", Propertytype.Name, "2256810");
+
+            //SeleniumSetMethods.SelectDDL("birthday_day", "28", Propertytype.Name);
+            //SeleniumSetMethods.SelectDDL("birthday_month", "2", Propertytype.Name);
+            //SeleniumSetMethods.SelectDDL("birthday_year", "1995", Propertytype.Name);
+            //SeleniumSetMethods.Click("sex", Propertytype.Name);
+            ////SeleniumSetMethods.click(driver, "websubmit", "Name"); 
+
+            ////Console.WriteLine("Details filled Successfully");
+
+
+            //Console.WriteLine("The email id is: " + SeleniumGetMethods.GetText(Propertytype.Name, "reg_email__"));
+            //Console.WriteLine("the Date of Birth is :" + SeleniumGetMethods.GetDDLValue(Propertytype.Name, "birthday_day") + "/"
+            //    + SeleniumGetMethods.GetDDLValue(Propertytype.Name, "birthday_month") + "/"
+            //    + SeleniumGetMethods.GetDDLValue(Propertytype.Name, "birthday_year"));
+
+
+
+            //Console.WriteLine("Details filled Successfully");
         }
 
         [TearDown]

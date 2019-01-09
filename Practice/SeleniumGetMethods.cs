@@ -9,27 +9,28 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Practice
 {
-    class SeleniumGetMethods
+   public static  class SeleniumGetMethods
     {
-       
-        public static String GetText(Propertytype elementtype,String element)
+        //Get value from a textbox
+        public static String GetText(this IWebElement element)
         {
             String Data;
-            if (elementtype==Propertytype.Id)
-            {
-                 Data= PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute("value");
-                return Data;
-            }
-            if (elementtype == Propertytype.Name)
-            {
-                Data = PropertiesCollection.driver.FindElement(By.Name(element)).GetAttribute("value");
-                return Data;
-            }
-            else
-                Data = String.Empty;
-            return Data;
-        }
 
+            Data = element.GetAttribute("value");
+            return Data;
+
+        }
+        //Get value from Checkbox,Radiobutton etc
+
+        public static String GetDDLValue(this IWebElement element)
+        {
+            String Data1;
+
+            Data1 = new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
+            return Data1;
+
+
+        }
 
     }
 }
